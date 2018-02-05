@@ -1,0 +1,68 @@
+# 博客写作工具捣鼓
+> 俗话说，工欲善其事，必先利其器，因此便有了这篇写作工具捣鼓的文章。个人认为自己的悟性还是比较低的，所以这篇文章还是花了一点时间测试整理，希望能够对您有用。
+
+<!-- MarkdownTOC -->
+
+- 在线工具使用
+- SublimeText3捣鼓Markdown插件
+    - 准备工作
+    - 插件安装方式
+    - 安装MarkdownEditing
+    - 安装OmniMarkupPreviewer
+    - 其他插件推荐
+
+<!-- /MarkdownTOC -->
+
+## 在线工具使用
+前两篇博客写作都是采用的在线的markdown工具，先用[马克飞象](https://maxiang.io/)工具写好之后，再用[Md2All](http://md.aclickall.com/)，这是一个markdown的排版利器，导入.md的内容之后，导出为带样式的Html文件，直接command + c , command + v到公众号中，然后`重新上传一下图`就可以了。
+> *重新上传图片：*这个问题目前已经大概有了解决方法，就是把图片放线上，直接从线上获取。
+
+虽然上面的方式还能凑合着用，但是本着追求更便利的想法，就捣鼓出了下面的客户端的工具，因为个人还是不那么倾向于使用在线的工具的。
+
+## SublimeText3捣鼓Markdown插件
+>**注意：** 本文中的快捷键针对mac版本
+
+### 准备工作
+既然是针对SublineText，那肯定是要先安装软件，作者是从官网直接下载的安装包进行安装，大小也就15M不到。安装完成之后，需要安装Package Control，它是一个开源的用于插件管理的插件，作者安装方法是simple安装方式。从菜单View-ShowConsole或者快捷键control + ~的方式调用控制台，输入以下代码：
+> - SublineText3
+```python  
+    import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+```
+*详细参考:* [https://packagecontrol.io/installation](https://packagecontrol.io/installation)
+
+点击确认，安装完成之后就可以使用该插件为SublineText安装插件了。
+### 插件安装方式
+command + Shift + P调出Command Paletter，输入install，选择出现的Package Control：Install Package，左下角转动结束之后，会弹出一个让你选择需要安装插件的列表，选择你搜索希望安装的插件，一会就可以安装成功。
+![install]()
+![select package]()
+### 安装MarkdownEditing
+MarkdownEditing提供markdown编辑的基本辅助提示，也有自己的一套配色方案。安装此插件可以方便markdown的书写。打开Command Paletter，按照上述方法安装即可
+### 安装OmniMarkupPreviewer
+这个插件可以用来预览markdown文档，默认是不支持mathjax公式的，需要支持，请修改配置文件，在user中增加以下配置即可。
+``` java
+{
+      "mathjax_enabled": true
+} 
+```
+> **OmniMarkupPreviewer操作快捷键：**
+
+> - 浏览器预览: command + option + O(字母)
+> - 保存为html文件: command + option + X(存放在.md文件同一目录)
+> - 插入图片或者链接：command + shift + K 
+
+安装完上面两个插件就可以进行markdown的基本操作了。
+
+### 其他插件推荐
+#### Monokai Extended或 Markdown Extended
+提供一套Monokai的markdown主题，作者用的就是Monokai Extended Origin，修改方式Preferences - Color Scheme - 选择你想更换的主题即可。
+
+#### MarkdownTOC
+这个插件可以一键生成目录。安装完后的简单配置工作。打开Preferences -> Package Settings -> MarkdownTOC -> Setting - User进行配置
+``` json
+{
+  "default_autolink": true,            #目录以链接形式呈现
+  "default_bracket": "round",        #目录以链接形式呈现
+  "default_depth": 0                  #无限目录深度
+}
+```
+将光标置于文档首部，点击 Tools -> MarkdownTOC -> Insert TOC，会自动在文首生成目录

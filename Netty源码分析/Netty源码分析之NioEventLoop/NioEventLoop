@@ -1,0 +1,28 @@
+#SublimeText3捣鼓Markdown插件
+
+>**注意：** 本文中的快捷键针对mac版本
+## 准备工作
+既然是针对SublineText，那肯定是要先安装软件，作者是从官网直接下载的安装包进行安装，大小也就15M不到。安装完成之后，需要安装Package Control，它是一个开源的用于插件管理的插件，作者安装方法是simple安装方式。从菜单View-ShowConsole或者快捷键control + ~的方式调用控制台，输入以下代码：
+> - SublineText3  
+    import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+
+*详细参考:* [https://packagecontrol.io/installation](https://packagecontrol.io/installation)
+
+点击确认，安装完成之后就可以使用该插件为SublineText安装插件了。
+## 插件安装方式
+command + Shift + P调出Command Paletter，输入install，选择出现的Package Control：Install Package，左下角转动结束之后，会弹出一个让你选择需要安装插件的列表，选择你搜索希望安装的插件，一会就可以安装成功。
+![install]()
+![select package]()
+## 安装MarkdownEditing
+MarkdownEditing提供markdown编辑的基本辅助提示，也有自己的一套配色方案。安装此插件可以方便markdown的书写。打开Command Paletter，按照上述方法安装即可
+## 安装OmniMarkupPreviewer
+这个插件可以用来预览markdown文档，默认是不支持mathjax公式的，需要支持，请修改配置文件，在user中增加以下配置即可。
+``` java
+{
+      "mathjax_enabled": true
+} 
+```
+>**OmniMarkupPreviewer操作快捷键：**
+浏览器预览: comman + option + O(字母)
+
+安装完上面两个插件就可以进行markdown的基本操作了。
